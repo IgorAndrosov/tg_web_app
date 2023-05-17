@@ -1,30 +1,127 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-    color: var(--tg-theme-text-color);
-    background: var(--tg-theme-bg-color);
+  background-image: url("photo/background.jpg");
+  background-size: cover;
 }
 
-.container {
-    max-width: 390px;
+
+/*.cafe-item {
+    position: relative;
+    width: 120px;
+    height: 159px;
+    padding: 4px 5px 21px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .cafe-item-counter {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  .cafe-item-photo img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .cafe-item-label {
+    margin-top: 10px;
+  }
+  
+  .cafe-item-buttons {
+    margin-top: 10px;
+  }
+  
+  .cafe-item-add-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    background: rgb(248, 168, 24);
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    transition: background .2s linear;
+  }
+  
+  .cafe-item-add-button:hover {
+    background: lightgreen;
 }
 
-.inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px 200px;
+  .cafe-item-decr-button,
+  .cafe-item-incr-button {
+    display: none;
+    padding: 10px 20px;
+    border: none;
+    background: rgb(248, 168, 24);
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 350;
+
+    transition: background .2s linear;
+  }
+  
+  .cafe-item-decr-button:hover,
+  .cafe-item-incr-button:hover {
+    background: lightgreen;
 }
 
-.img {
-    width: 150px;
-}
-
-.item {
+  .cafe-item-counter.is-active ~ .cafe-item-buttons .cafe-item-add-button {
+    display: none;
+  }
+  
+  .cafe-item-counter.is-active ~ .cafe-item-buttons .cafe-item-decr-button,
+  .cafe-item-counter.is-active ~ .cafe-item-buttons .cafe-item-incr-button {
+    display: inline-block;
+  }*/
+  
+  .cafe-item {
+    position: relative;
+    width: 120px;
+    height: 159px;
+    padding: 4px 5px 21px;
+    box-sizing: border-box;
     text-align: center;
 }
 
-.btn {
+  .cafe-item-counter {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+ .cafe-item img {
+    width: 100%;
+    height: auto;
+}
+
+ .cafe-item-name {
+    margin-top: 10px;
+}
+
+ .cafe-item-price {
+    margin-top: 10px;
+}
+
+ .add-button {
     display: inline-block;
     padding: 10px 20px;
     border: none;
@@ -37,19 +134,28 @@ body {
     transition: background .2s linear;
 }
 
-.btn:hover {
+.minus-button,
+.plus-button {
+    display: none;
+    padding: 10px 20px;
+    border: none;
+    background: rgb(248, 168, 24);
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 350;
+
+    transition: background .2s linear;
+}
+
+.add-button:hover,
+.minus-button:hover,
+.plus-button:hover {
     background: lightgreen;
 }
-
-.usercard {
-    text-align: center;
-}
-
-/*
-var(--tg-theme-bg-color)
-var(--tg-theme-text-color)
-var(--tg-theme-hint-color)
-var(--tg-theme-link-color)
-var(--tg-theme-button-color)
-var(--tg-theme-button-text-color)
-*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    align-items: center;
+  }
