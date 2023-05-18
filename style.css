@@ -39,21 +39,10 @@ body {
     margin-top: 10px;
 }
 
- .add-button {
+ .add-button,
+ .button,
+ #close-button {
     display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    background: rgb(248, 168, 24);
-    border-radius: 10px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 700;
-
-    transition: background .2s linear;
-}
-
-.button {
-    display: none;
     padding: 10px 20px;
     border: none;
     background: rgb(248, 168, 24);
@@ -81,7 +70,8 @@ body {
 
 .add-button:hover,
 .minus-button:hover,
-.plus-button:hover {
+.plus-button:hover,
+.button:hover {
     background: lightgreen;
 }
 .container {
@@ -90,3 +80,30 @@ body {
     grid-gap: 10px;
     align-items: center;
   }
+
+  #iframe-overlay {
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* Прозрачный цвет фона */
+    z-index: 9999; /* Позиционирование поверх других элементов */
+    display: none; /* Изначально скрыт */
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  
+  #iframe-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+  }
+  
+  #iframe-overlay.active {
+    display: block; /* Показываем overlay при активации */
+  }
+ 

@@ -1,4 +1,5 @@
-// Данные для элементов кафе-меню
+import { sendReceipt } from './telegram.js';
+
 const menuData = [
     {
       name: "Burger",
@@ -112,8 +113,6 @@ addButton.forEach((button, index) => {
     minusButton[index].style.display = 'inline-block';
     plusButton[index].style.display = 'inline-block';
     
-    // Дополнительные действия, которые вы хотите выполнить при нажатии кнопки
-    // Например, добавление элемента в корзину или отображение подробной информации
   });
 });
 
@@ -146,7 +145,6 @@ minusButton.forEach((button, index) => {
 
   function updateCart() {
     cart.innerHTML = ""; // Очищаем содержимое корзины
-
     let total = 0;
   
     // Перебираем все элементы и добавляем в корзину только те, у которых счетчик больше нуля
@@ -173,6 +171,7 @@ const cartButton = document.getElementById("cart-button");
 
 // Обработчик события для кнопки "Корзина"
 cartButton.addEventListener("click", () => {
+  showReceipt();
   showCartDetails();
 });
 
@@ -232,6 +231,48 @@ function showCartDetails() {
     }
   }
 
-  // Отображаем всплывающее окно с деталями заказа
-  alert(`Детали заказа:\n\n${cartItems}\nОбщая сумма заказа: $${total.toFixed(2)}`);
 }
+
+//let receiptContent = "<h2>Чек</h2>";
+  //export default receiptContent;
+
+function showReceipt() {
+  const closeButton = document.getElementById("close-button");
+  closeButton.addEventListener("click", () => {
+  const iframeOverlay = document.getElementById("iframe-overlay");
+  iframeOverlay.classList.remove("active");
+  });
+
+  // Создание содержимого чека
+  let receiptContent = "<h2>Чек</h2>";
+
+  // Добавление позиций заказа и их суммы
+  for (let i = 0; i < menuData.length; i++) {
+    const currentValue = parseInt(counter[i].textContent);
+    const itemPrice = parseFloat(menuData[i].price.replace("$", ""));
+    const itemTotal = itemPrice * currentValue;
+    let cartItems = ""; // Строка для хранения деталей заказа
+    let total = 0;
+
+    // Добавьте необходимую логику для формирования строки с позицией и суммой
+    if (currentValue > 0) {
+      receiptContent += `${menuData[i].name}: ${currentValue} x $${itemPrice.toFixed(2)} = $${itemTotal.toFixed(2)}\n`;
+      total += itemTotal;
+    }
+  }
+
+  // Вычисление общей суммы заказа
+  const total = calculateTotal();
+  receiptContent += `<h3>Итого: $${total.toFixed(2)}</h3>`;
+
+  // Установка содержимого чека в iframe
+  const receiptIframe = document.getElementById("receipt-iframe");
+  receiptIframe.src = `data:text/html;charset=utf-8,${encodeURI(receiptContent)}`;
+
+  sendReceipt(chatId, receiptContent);
+
+  closeButton.style.display = 'inline-block';
+  const iframeOverlay = document.getElementById("iframe-overlay");
+  iframeOverlay.classList.add("active");
+}
+
