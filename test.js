@@ -162,11 +162,6 @@ cartButton.addEventListener("click", () => {
   //showCartDetails();
 });
 
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(cartButton);
-});
-
-let p = document.createElement("p");
 
 var chatId;
 
@@ -175,11 +170,19 @@ tg.getChat('@username').then(function(chat){
   console.log(chatId);
 });
 
-tg.sendMessage(chatId, cartButton).then(function() {
-  console.log('Сообщение успешно отправлено');
-}).catch(function(error) {
-  console.error('Ошибка отправки сообщения:', error);
+
+Telegram.WebApp.onEvent("mainButtonClicked", function(){
+  tg.sendData(cartButton);
+  tg.sendMessage(chatId, cartButton).then(function() {
+    console.log('Сообщение успешно отправлено');
+  }).catch(function(error) {
+    console.error('Ошибка отправки сообщения:', error);
+  });
 });
+
+let p = document.createElement("p");
+
+
 
 function updateCartButton() {
     let total = calculateTotal();
