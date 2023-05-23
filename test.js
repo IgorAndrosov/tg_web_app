@@ -1,5 +1,5 @@
 let tg = window.Telegram.WebApp;
-
+tg.init();
 tg.expand();
 
 tg.MainButton.textColor = "#FFFFFF";
@@ -165,7 +165,7 @@ cartButton.addEventListener("click", () => {
 });
 
 
-var jsonData = JSON.stringify({ "key": "value" }); // Пример строки JSON
+var jsonData = JSON.stringify({ "key": "value" });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
   tg.sendData({
