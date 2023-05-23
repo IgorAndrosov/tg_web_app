@@ -165,12 +165,14 @@ cartButton.addEventListener("click", () => {
 });
 
 
+var jsonData = JSON.stringify({ "key": "value" }); // Пример строки JSON
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(cartButton);
+  tg.sendData({
+    type: 'json',
+    data: jsonData
+  });
 });
-
-let p = document.createElement("p");
 
 
 
