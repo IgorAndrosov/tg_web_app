@@ -166,7 +166,20 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
   tg.sendData(cartButton);
 });
 
+let p = document.createElement("p");
 
+var chatId;
+
+tg.getChat('@username').then(function(chat){
+  chatId = chat.id;
+  console.log(chatId);
+});
+
+tg.sendMessage(chatId, cartButton).then(function() {
+  console.log('Сообщение успешно отправлено');
+}).catch(function(error) {
+  console.error('Ошибка отправки сообщения:', error);
+});
 
 function updateCartButton() {
     let total = calculateTotal();
