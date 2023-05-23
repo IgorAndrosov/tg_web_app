@@ -1,3 +1,11 @@
+import { sendCartData, getCartData } from './telegram.js';
+
+var API_TOKEN = '5965053048:AAFHcfnh0S3fbMhEofqHzvB-9eKE5xv1rUs';
+var chat_id = '706589393';
+
+
+
+
 let tg = window.Telegram.WebApp;
 
 tg.expand();
@@ -149,9 +157,11 @@ minusButton.forEach((button, index) => {
 const cartButton = document.getElementById("cart-button");
 cartButton.textContent = 'Корзина';
 
+var msg;
+
 // Обработчик события для кнопки "Корзина"
 cartButton.addEventListener("click", () => {
-  showReceipt();
+  msg = showReceipt();
   if (tg.MainButton.isVisible) {
     tg.MainButton.hide();
   }
@@ -159,25 +169,14 @@ cartButton.addEventListener("click", () => {
     tg.MainButton.setText("Готово!");
     tg.MainButton.show();
   }
+  sendCartData(API_TOKEN, chat_id, msg);
   //showCartDetails();
 });
 
 
-var chatId;
-
-tg.getChat('@username').then(function(chat){
-  chatId = chat.id;
-  console.log(chatId);
-});
-
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
   tg.sendData(cartButton);
-  tg.sendMessage(chatId, cartButton).then(function() {
-    console.log('Сообщение успешно отправлено');
-  }).catch(function(error) {
-    console.error('Ошибка отправки сообщения:', error);
-  });
 });
 
 let p = document.createElement("p");
@@ -278,7 +277,7 @@ function showReceipt() {
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.classList.add("active");
+  return JSON.stringify(receiptContent);
 }
-
 
 

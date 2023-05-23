@@ -1,13 +1,21 @@
-import { TelegramBot } from 'telegram-bot-sdk';
+export function sendCartData(API_TOKEN, chat_id, cartData) {
+  // Получите данные о содержимом корзины вашего веб-приложения
 
-// Ваш токен бота Telegram
-const botToken = '5965053048:AAFHcfnh0S3fbMhEofqHzvB-9eKE5xv1rUs';
+  // Отправьте данные боту через Telegram Bot API
+  var url = 'https://api.telegram.org/bot' + API_TOKEN + '/sendMessage';
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log('Данные корзины успешно отправлены в бота');
+    }
+  };
+  xhr.send('chat_id=' + chat_id + '&text=' + encodeURIComponent(cartData));
+}
 
-// Создайте экземпляр TelegramBot с токеном
-const bot = new TelegramBot(botToken);
-
-// Отправка сообщения с чеком
-export function sendReceipt(chatId, receiptContent) {
-  // Отправка сообщения с HTML форматированием
-  bot.sendMessage(chatId, receiptContent, { parse_mode: 'HTML' });
+export function getCartData() {
+  // Ваш код для получения данных о содержимом корзины
+  // Верните данные в нужном формате (например, в виде строки или объекта)
+  // Пример: return JSON.stringify(cartItems);
 }
