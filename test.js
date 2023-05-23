@@ -1,4 +1,9 @@
-import { sendReceipt } from './telegram.js';
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
+tg.MainButton.textColor = "#FFFFFF";
+tg.MainButton.color = "#2cab37";
 
 const menuData = [
     {
@@ -99,12 +104,12 @@ const addButton = document.querySelectorAll('.add-button');
 const counter = document.querySelectorAll('.cafe-item-counter');
 const minusButton = document.querySelectorAll('.minus-button');
 const plusButton = document.querySelectorAll('.plus-button');
+
 addButton.forEach((button, index) => {
   button.addEventListener("click", () => {
 
     const currentValue = parseInt(counter[index].textContent);
     counter[index].textContent = currentValue + 1;
-    updateCart(); // Обновляем корзину при изменении значения счетчика
     updateCartButton();
     cartButton.style.display = 'inline-block';
     button.style.display = 'none';
@@ -128,7 +133,6 @@ minusButton.forEach((button, index) => {
       }
 
       counter[index].textContent = currentValue - 1;
-      updateCart(); // Обновляем корзину при изменении значения счетчика
       updateCartButton();
 
     });
@@ -138,42 +142,31 @@ minusButton.forEach((button, index) => {
     button.addEventListener("click", () => {
         const currentValue = parseInt(counter[index].textContent);
         counter[index].textContent = parseInt(counter[index].textContent) + 1;
-        updateCart(); // Обновляем корзину при изменении значения счетчика
         updateCartButton();
     });
   });
 
-  function updateCart() {
-    cart.innerHTML = ""; // Очищаем содержимое корзины
-    let total = 0;
-  
-    // Перебираем все элементы и добавляем в корзину только те, у которых счетчик больше нуля
-    for (let i = 0; i < menuData.length; i++) {
-      const currentValue = parseInt(counter[i].textContent);
-      if (currentValue > 0) {
-        const item = menuData[i];
-        const cartItem = document.createElement("div");
-        cartItem.textContent = `${item.name}: ${currentValue}`;
-        cart.appendChild(cartItem);
-
-         // Вычисляем сумму для текущего элемента и добавляем к общей сумме
-        const itemPrice = parseFloat(item.price.replace("$", ""));
-        const itemTotal = itemPrice * currentValue;
-        total += itemTotal;
-      }
-    };
-    const totalElement = document.createElement("div");
-  totalElement.textContent = `Общая сумма заказа: $${total.toFixed(2)}`;
-  cart.appendChild(totalElement);
-};
-
 const cartButton = document.getElementById("cart-button");
+cartButton.textContent = 'Корзина';
 
 // Обработчик события для кнопки "Корзина"
 cartButton.addEventListener("click", () => {
   showReceipt();
-  showCartDetails();
+  if (tg.MainButton.isVisible) {
+    tg.MainButton.hide();
+  }
+  else{
+    tg.MainButton.setText("Готово!");
+    tg.MainButton.show();
+  }
+  //showCartDetails();
 });
+
+Telegram.WebApp.onEvent("mainButtonClicked", function(){
+  tg.sendData(cartButton);
+});
+
+
 
 function updateCartButton() {
     let total = calculateTotal();
@@ -214,7 +207,7 @@ function updateCartButton() {
     });
 };
 
-function showCartDetails() {
+/*function showCartDetails() {
   let cartItems = ""; // Строка для хранения деталей заказа
   let total = 0; // Переменная для отслеживания общей суммы заказа
 
@@ -231,10 +224,7 @@ function showCartDetails() {
     }
   }
 
-}
-
-//let receiptContent = "<h2>Чек</h2>";
-  //export default receiptContent;
+}*/
 
 function showReceipt() {
   const closeButton = document.getElementById("close-button");
@@ -269,10 +259,10 @@ function showReceipt() {
   const receiptIframe = document.getElementById("receipt-iframe");
   receiptIframe.src = `data:text/html;charset=utf-8,${encodeURI(receiptContent)}`;
 
-  sendReceipt(chatId, receiptContent);
-
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.classList.add("active");
 }
+
+
 
