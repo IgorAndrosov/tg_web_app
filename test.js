@@ -1,11 +1,3 @@
-import { sendCartData, getCartData } from './telegram.js';
-
-var API_TOKEN = '5965053048:AAFHcfnh0S3fbMhEofqHzvB-9eKE5xv1rUs';
-var chat_id = '706589393';
-
-
-
-
 let tg = window.Telegram.WebApp;
 
 tg.expand();
@@ -169,7 +161,6 @@ cartButton.addEventListener("click", () => {
     tg.MainButton.setText("Готово!");
     tg.MainButton.show();
   }
-  sendCartData(API_TOKEN, chat_id, msg);
   //showCartDetails();
 });
 
@@ -279,5 +270,6 @@ function showReceipt() {
   iframeOverlay.classList.add("active");
   return JSON.stringify(receiptContent);
 }
+
 
 
