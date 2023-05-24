@@ -1,9 +1,9 @@
-let tg = window.Telegram.WebApp;
+/*let tg = window.Telegram.WebApp;
 tg.init();
 tg.expand();
 
 tg.MainButton.textColor = "#FFFFFF";
-tg.MainButton.color = "#2cab37";
+tg.MainButton.color = "#2cab37";*/
 
 const menuData = [
     {
@@ -154,13 +154,13 @@ var msg;
 // Обработчик события для кнопки "Корзина"
 cartButton.addEventListener("click", () => {
   msg = showReceipt();
-  if (tg.MainButton.isVisible) {
+  /*if (tg.MainButton.isVisible) {
     tg.MainButton.hide();
   }
   else{
     tg.MainButton.setText("Готово!");
     tg.MainButton.show();
-  }
+  }*/
   //showCartDetails();
 });
 
@@ -238,7 +238,7 @@ function showReceipt() {
   const closeButton = document.getElementById("close-button");
   closeButton.addEventListener("click", () => {
   const iframeOverlay = document.getElementById("iframe-overlay");
-  iframeOverlay.classList.remove("active");
+  iframeOverlay.classList.remove("show");
   });
 
   // Создание содержимого чека
@@ -254,7 +254,7 @@ function showReceipt() {
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
-      receiptContent += `${menuData[i].name}: ${currentValue} x $${itemPrice.toFixed(2)} = $${itemTotal.toFixed(2)}\n`;
+      receiptContent += `${menuData[i].name}: ${currentValue} x $${itemPrice.toFixed(2)} = $${itemTotal.toFixed(2)} <br>`;
       total += itemTotal;
     }
   }
@@ -269,8 +269,9 @@ function showReceipt() {
 
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
-  iframeOverlay.classList.add("active");
-  return JSON.stringify(receiptContent);
+
+  iframeOverlay.classList.add("show");
+  
 }
 
 
