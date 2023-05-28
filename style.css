@@ -1,10 +1,12 @@
 body {
   background-image: url("photo/background.jpg");
   background-size: cover;
+  margin: 0px;
+  
 }
 
   .cafe-item {
-    position: relative;
+    /*position: relative;*/
     width: 120px;
     height: 159px;
     padding: 4px 5px 21px;
@@ -78,11 +80,14 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    justify-items: center;
+    justify-content: center;
     align-items: center;
+    height: 100vh; /* Необходимо задать высоту контейнера */
   }
-
+ 
   #iframe-overlay {
-    position: relative;
+    position: absolute;
 
     top: 5%;
     left: 10%;
@@ -133,5 +138,31 @@ body {
     padding: 10px;
     background-color: red;
     color: white;
+  }
+  
+
+
+  .header {
+    background-color: #d30000;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+  }
+  
+  .nav-item a {
+    color: #fff;
+    text-decoration: none;
   }
   
