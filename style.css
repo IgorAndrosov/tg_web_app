@@ -87,7 +87,7 @@ body {
   }
  
   #iframe-overlay {
-    position: absolute;
+    position: fixed;
 
     top: 5%;
     left: 10%;
@@ -143,26 +143,25 @@ body {
 
 
   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #d30000;
-  }
-  
-  .navbar {
+    padding: 20px;
+    z-index: 999;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+  .logo {
+    max-width: 50px; /* Размер вашего логотипа */
+    height: auto;
+    text-align: center;
+    flex-grow: 1;
   }
-  
-  .nav-item {
-    margin: 0 10px;
+
+  main {
+    padding-top: 80px; /* Значение должно быть равно или больше высоты шапки */
   }
-  
-  .nav-item a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
