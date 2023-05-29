@@ -6,7 +6,7 @@ body {
 }
 
   .cafe-item {
-    /*position: relative;*/
+    position: relative;
     width: 120px;
     height: 159px;
     padding: 4px 5px 21px;
@@ -16,9 +16,9 @@ body {
 
   .cafe-item-counter {
     display: none;
-    position: absolute;
-    top: -10px;
-    right: -10px;
+    position: relative;
+    top: 10px;
+    right: -55px;
     width: 20px;
     height: 20px;
     background-color: red;
@@ -26,6 +26,7 @@ body {
     border-radius: 50%;
     font-size: 12px;
     line-height: 20px;
+    border: 1px solid #ccc;
   }
 
  .cafe-item img {
@@ -151,8 +152,7 @@ body {
     padding: 20px;
     z-index: 999;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+   align-items: center;
   }
 
   .logo {
@@ -160,6 +160,21 @@ body {
     height: auto;
     text-align: center;
     flex-grow: 1;
+    margin-left: 45%;
+    margin-right: auto;
+  }
+
+  .parent{
+    width: 134px;
+    margin-right: 28px;
+  }
+  
+
+  #cart-button{
+    text-align: center;
+    margin-right: 5%;
+    font-size: 17px;
+    padding: 6px;
   }
 
   main {
