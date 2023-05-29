@@ -113,7 +113,7 @@ addButton.forEach((button, index) => {
     updateCartButton();
     cartButton.style.display = 'inline-block';
     button.style.display = 'none';
-    counter[index].style.display = 'inline-block';
+    counter[index].style.opacity = '1';
 
     minusButton[index].style.display = 'inline-block';
     plusButton[index].style.display = 'inline-block';
@@ -128,7 +128,7 @@ minusButton.forEach((button, index) => {
       if (currentValue == 1) {
         button.style.display = 'none';
         plusButton[index].style.display = 'none';
-        counter[index].style.display = 'none';
+        counter[index].style.opacity = '0'
         addButton[index].style.display = 'inline-block';
       }
 
@@ -154,6 +154,8 @@ var msg;
 // Обработчик события для кнопки "Корзина"
 cartButton.addEventListener("click", () => {
   msg = showReceipt();
+  const iframeOverlay = document.getElementById("iframe-overlay");
+  iframeOverlay.style.zIndex = '9999';
   /*if (tg.MainButton.isVisible) {
     tg.MainButton.hide();
   }
@@ -239,6 +241,7 @@ function showReceipt() {
   closeButton.addEventListener("click", () => {
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.classList.remove("show");
+  iframeOverlay.style.zIndex = '1';
   });
 
   // Создание содержимого чека
