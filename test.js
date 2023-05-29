@@ -156,13 +156,13 @@ cartButton.addEventListener("click", () => {
   msg = showReceipt();
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.style.zIndex = '9999';
-  /*if (tg.MainButton.isVisible) {
+  if (tg.MainButton.isVisible) {
     tg.MainButton.hide();
   }
   else{
     tg.MainButton.setText("Готово!");
     tg.MainButton.show();
-  }*/
+  }
   //showCartDetails();
 });
 
