@@ -1,9 +1,9 @@
-/*let tg = window.Telegram.WebApp;
+let tg = window.Telegram.WebApp;
 tg.init();
 tg.expand();
 
 tg.MainButton.textColor = "#FFFFFF";
-tg.MainButton.color = "#2cab37";*/
+tg.MainButton.color = "#2cab37";
 
 const menuData = [
     {
