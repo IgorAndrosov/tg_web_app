@@ -253,11 +253,11 @@ function showReceipt() {
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
 
-  var htmlString = '<h2>Чек</h2><h3>Итого: $0.00</h3>';
+  var htmlString = '<h2>Чек</h2>Pizza: 2 x $9.99 = $19.98 &lt;br&gt;<h3>Итого: $19.98</h3>';
   var temporaryDiv = document.createElement('div');
   temporaryDiv.innerHTML = htmlString;
 
-  var resultString = temporaryDiv.textContent;
+  var resultString = temporaryDiv.innerHTML.replace(/&lt;br&gt;/g, '<br>');
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
     tg.sendData(resultString); 
