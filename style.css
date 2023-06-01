@@ -198,9 +198,6 @@ body {
     padding-top: 80px; /* Значение должно быть равно или больше высоты шапки */
   }
 
-
-
-
   .cross {
     position: relative;
     width: 30px;
@@ -234,13 +231,3 @@ body {
     height: 4px;
     transform: rotate(45deg);
   }
-  
-  element.style {
-    --primary-color: #31b545;
-    --primary-color-rgb: 49,181,69;
-    --light-primary-color: rgba(49, 181, 69, 0.08);
-    --light-filled-primary-color: #222c23;
-    --dark-primary-color: hsl(129.0909090909091, 57.391304347826086%, 41.09803921568628%);
-    color: rgb(255, 255, 255);
-}
-
