@@ -14,32 +14,32 @@ const menuData = [
       image: "photo/logo.jpg"
     },
     {
-        name: "Pizza",
+        name: "Cappuchino",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
       {
-        name: "Pizza",
+        name: "Americano",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
       {
-        name: "Pizza",
+        name: "Latte",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
       {
-        name: "Pizza",
+        name: "Raf",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
       {
-        name: "Pizza",
+        name: "Roll",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
       {
-        name: "Pizza",
+        name: "Wok",
         price: "$9.99",
         image: "photo/logo.jpg"
       },
@@ -253,14 +253,8 @@ function showReceipt() {
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
 
-  var htmlString = '<h2>Чек</h2>Pizza: 2 x $9.99 = $19.98 &lt;br&gt;<h3>Итого: $19.98</h3>';
-  var temporaryDiv = document.createElement('div');
-  temporaryDiv.innerHTML = htmlString;
-
-  var resultString = temporaryDiv.innerHTML.replace(/&lt;br&gt;/g, '<br>');
-
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData(resultString); 
+    tg.sendData(receiptContent); 
     //при клике на основную кнопку отправляем данные в строковом виде
   });
 
