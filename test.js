@@ -1,9 +1,6 @@
 let tg = window.Telegram.WebApp;
-tg.init();
 tg.expand();
-
-tg.MainButton.textColor = "#FFFFFF";
-tg.MainButton.color = "#2cab37";
+tg.MainButton.text = "Продолжить";
 
 const menuData = [
     {
@@ -156,24 +153,9 @@ cartButton.addEventListener("click", () => {
   msg = showReceipt();
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.style.zIndex = '9999';
-  if (tg.MainButton.isVisible) {
-    tg.MainButton.hide();
-  }
-  else{
-    tg.MainButton.setText("Готово!");
-    tg.MainButton.show();
-  }
+  tg.MainButton.show();
   //showCartDetails();
 });
-
-
-
-
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  
-});
-
-
 
 function updateCartButton() {
     let total = calculateTotal();
@@ -239,6 +221,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
   iframeOverlay.classList.remove("show");
   iframeOverlay.style.zIndex = '1';
+  tg.MainButton.hide();
   });
 
   // Создание содержимого чека
@@ -270,8 +253,12 @@ function showReceipt() {
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
 
+  Telegram.WebApp.onEvent('mainButtonClicked', function(){
+    tg.sendData("some string that we need to send"); 
+    //при клике на основную кнопку отправляем данные в строковом виде
+  });
+
   iframeOverlay.classList.add("show");
-  
 }
 
 
