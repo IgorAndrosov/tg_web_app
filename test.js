@@ -253,8 +253,14 @@ function showReceipt() {
   closeButton.style.display = 'inline-block';
   const iframeOverlay = document.getElementById("iframe-overlay");
 
+  var htmlString = '<h2>Чек</h2><h3>Итого: $0.00</h3>';
+  var temporaryDiv = document.createElement('div');
+  temporaryDiv.innerHTML = htmlString;
+
+  var resultString = temporaryDiv.textContent;
+
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData(receiptContent); 
+    tg.sendData(resultString); 
     //при клике на основную кнопку отправляем данные в строковом виде
   });
 
