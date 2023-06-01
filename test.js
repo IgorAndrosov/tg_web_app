@@ -152,7 +152,7 @@ var msg;
 cartButton.addEventListener("click", () => {
   msg = showReceipt();
   const iframeOverlay = document.getElementById("iframe-overlay");
-  iframeOverlay.style.zIndex = '99999';
+  iframeOverlay.style.zIndex = '99';
   tg.MainButton.show();
   //showCartDetails();
 });
