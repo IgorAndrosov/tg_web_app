@@ -4,44 +4,44 @@ tg.MainButton.text = "Продолжить";
 
 const menuData = [
     {
-      name: "Burger",
-      price: "$4.99",
-      image: "photo/logo.jpg"
+      name: "Капучино",
+      price: "150₽",
+      image: "photo/menu/Capuch.png"
     },
     {
-      name: "Pizza",
-      price: "$9.99",
-      image: "photo/logo.jpg"
+      name: "Латте",
+      price: "150₽",
+      image: "photo/menu/Latte.png"
     },
     {
-        name: "Cappuchino",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Флэт Уайт",
+        price: "180₽",
+        image: "photo/menu/Flet.png"
       },
       {
-        name: "Americano",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Американо",
+        price: "120₽",
+        image: "photo/menu/Americano.png"
       },
       {
-        name: "Latte",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Раф",
+        price: "200₽",
+        image: "photo/menu/Raf.png"
       },
       {
-        name: "Raf",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Айс кофе",
+        price: "150₽",
+        image: "photo/menu/Ice.png"
       },
       {
-        name: "Roll",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Чизкейк",
+        price: "130₽",
+        image: "photo/menu/Cake.png"
       },
       {
-        name: "Wok",
-        price: "$9.99",
-        image: "photo/logo.jpg"
+        name: "Безе",
+        price: "90₽",
+        image: "photo/menu/Beze.jpg"
       },
   ];
   
@@ -67,7 +67,7 @@ const menuData = [
     // Создаем название
     const name = document.createElement("span");
     name.classList.add("cafe-item-name");
-    name.textContent = item.name;
+    name.textContent = item.name + "\n";
     cafeItem.appendChild(name);
   
     // Создаем цену
@@ -161,7 +161,7 @@ function updateCartButton() {
     let total = calculateTotal();
   
     // Обновляем текст кнопки с суммой заказа
-    cartButton.textContent = `Корзина ($${total.toFixed(2)})`;
+    cartButton.textContent = `Корзина (${total.toFixed(2)}₽)`;
   };
 
   function calculateTotal() {
@@ -170,7 +170,7 @@ function updateCartButton() {
     // Рассчитываем общую сумму заказа
     for (let i = 0; i < menuData.length; i++) {
       const currentValue = parseInt(counter[i].textContent);
-      const itemPrice = parseFloat(menuData[i].price.replace("$", ""));
+      const itemPrice = parseFloat(menuData[i].price.replace("₽", ""));
       const itemTotal = itemPrice * currentValue;
   
       total += itemTotal;
@@ -187,33 +187,10 @@ function updateCartButton() {
   
     addButton.forEach((button, index) => {
       button.addEventListener("click", () => {
-        // Обработчик события при нажатии кнопки "Добавить"
-  
-        // Ваш код для изменения количества и других действий
-  
         updateCartButton(); // Обновляем текст кнопки с суммой заказа
       });
     });
 };
-
-/*function showCartDetails() {
-  let cartItems = ""; // Строка для хранения деталей заказа
-  let total = 0; // Переменная для отслеживания общей суммы заказа
-
-  // Формируем детали заказа
-  for (let i = 0; i < menuData.length; i++) {
-    const currentValue = parseInt(counter[i].textContent);
-    const itemPrice = parseFloat(menuData[i].price.replace("$", ""));
-    const itemTotal = itemPrice * currentValue;
-
-    // Добавляем детали заказа, если количество больше нуля
-    if (currentValue > 0) {
-      cartItems += `${menuData[i].name}: ${currentValue} x $${itemPrice.toFixed(2)} = $${itemTotal.toFixed(2)}\n`;
-      total += itemTotal;
-    }
-  }
-
-}*/
 
 function showReceipt() {
   const closeButton = document.getElementById("close-button");
@@ -230,21 +207,21 @@ function showReceipt() {
   // Добавление позиций заказа и их суммы
   for (let i = 0; i < menuData.length; i++) {
     const currentValue = parseInt(counter[i].textContent);
-    const itemPrice = parseFloat(menuData[i].price.replace("$", ""));
+    const itemPrice = parseFloat(menuData[i].price.replace("₽", ""));
     const itemTotal = itemPrice * currentValue;
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
-      receiptContent += `${menuData[i].name}: ${currentValue} x $${itemPrice.toFixed(2)} = $${itemTotal.toFixed(2)} <br>`;
+      receiptContent += `${menuData[i].name}: ${currentValue} x ${itemPrice.toFixed(2)}₽ = ${itemTotal.toFixed(2)}₽<br>`;
       total += itemTotal;
     }
   }
 
   // Вычисление общей суммы заказа
   const total = calculateTotal();
-  receiptContent += `<h3>Итого: $${total.toFixed(2)}</h3>`;
+  receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
   // Установка содержимого чека в iframe
   const receiptIframe = document.getElementById("receipt-iframe");

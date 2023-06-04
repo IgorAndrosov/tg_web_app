@@ -11,9 +11,10 @@ body {
     position: relative;
     width: 120px;
     height: 200px;
-    padding: 4px 5px 21px;
+    padding: 4px 0px 21px;
     box-sizing: border-box;
     text-align: center;
+    margin-top: 15px;
 }
 
   .cafe-item-counter {
@@ -38,11 +39,17 @@ body {
 }
 
  .cafe-item-name {
-    margin-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
  .cafe-item-price {
-    margin-top: 10px;
+  display: flex;
+  margin: 5px;
+  justify-content: center;
 }
 
  .add-button,
