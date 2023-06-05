@@ -228,7 +228,7 @@ function showReceipt() {
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
   data[cou] = total;
-  cou = 0;
+  //cou = 0;
 
   // Установка содержимого чека в iframe
   const receiptIframe = document.getElementById("receipt-iframe");
