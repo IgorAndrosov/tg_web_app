@@ -193,7 +193,6 @@ function updateCartButton() {
 };
 
 function showReceipt() {
-  let data = [];
   const closeButton = document.getElementById("close-button");
   closeButton.addEventListener("click", () => {
     data = [];
@@ -205,7 +204,6 @@ function showReceipt() {
 
   // Создание содержимого чека
   let receiptContent = "<h2>Чек</h2>";
-  let cou = 0;
 
   // Добавление позиций заказа и их суммы
   for (let i = 0; i < menuData.length; i++) {
@@ -218,8 +216,6 @@ function showReceipt() {
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
       receiptContent += `${menuData[i].name}: ${currentValue} x ${itemPrice.toFixed(2)}₽ = ${itemTotal.toFixed(2)}₽<br>`;
-      data[cou] = itemPrice;
-      cou = cou + 1;
       total += itemTotal;
     }
   }
@@ -228,9 +224,7 @@ function showReceipt() {
   const total = calculateTotal();
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
-  data[cou] = total;
   let sum = total;
-  //cou = 0;
 
   // Установка содержимого чека в iframe
   const receiptIframe = document.getElementById("receipt-iframe");
@@ -240,7 +234,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData("some string that we need to send");
+    tg.sendData(sum);
   });
 
   iframeOverlay.classList.add("show");
