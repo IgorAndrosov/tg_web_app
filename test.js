@@ -214,12 +214,12 @@ function showReceipt() {
     const itemTotal = itemPrice * currentValue;
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
-    data = itemPrice;
     cou = cou + 1 ;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
       receiptContent += `${menuData[i].name}: ${currentValue} x ${itemPrice.toFixed(2)}₽ = ${itemTotal.toFixed(2)}₽<br>`;
+      data = itemPrice.toFixed(2);
       total += itemTotal;
     }
   }
