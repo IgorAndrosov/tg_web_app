@@ -229,6 +229,7 @@ function showReceipt() {
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
   data[cou] = total;
+  let sum = total;
   //cou = 0;
 
   // Установка содержимого чека в iframe
@@ -243,7 +244,7 @@ function showReceipt() {
       var dataToSend = {
         dataArray: data
       };
-      tg.sendData(dataToSend);
+      tg.sendData(sum);
     });
   });
 
