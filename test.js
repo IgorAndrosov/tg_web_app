@@ -214,7 +214,7 @@ function showReceipt() {
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
     data[cou] = itemPrice;
-    cou += cou;
+    cou = cou + 1 ;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
