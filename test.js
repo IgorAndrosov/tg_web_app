@@ -234,11 +234,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    var dataToSend = {
-      datatg: sum,
-      isSubscribed: true
-    };
-    tg.sendData(dataToSend);
+    tg.sendData("dataToSend");
   });
 
   iframeOverlay.classList.add("show");
