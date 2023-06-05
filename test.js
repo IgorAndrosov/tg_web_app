@@ -239,7 +239,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData(data); 
+    tg.sendData(1); 
     //при клике на основную кнопку отправляем данные в строковом виде
   });
 
