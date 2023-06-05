@@ -203,6 +203,8 @@ function showReceipt() {
 
   // Создание содержимого чека
   let receiptContent = "<h2>Чек</h2>";
+  const data = [];
+  let cou = 0;
 
   // Добавление позиций заказа и их суммы
   for (let i = 0; i < menuData.length; i++) {
@@ -211,6 +213,8 @@ function showReceipt() {
     const itemTotal = itemPrice * currentValue;
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
+    data[cou] = itemPrice;
+    cou += cou;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
@@ -223,6 +227,9 @@ function showReceipt() {
   const total = calculateTotal();
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
+  data[cou] = total;
+  cou = 0;
+
   // Установка содержимого чека в iframe
   const receiptIframe = document.getElementById("receipt-iframe");
   receiptIframe.src = `data:text/html;charset=utf-8,${encodeURI(receiptContent)}`;
@@ -231,7 +238,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData(receiptContent); 
+    tg.sendData(data); 
     //при клике на основную кнопку отправляем данные в строковом виде
   });
 
