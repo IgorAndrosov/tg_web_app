@@ -196,7 +196,7 @@ function showReceipt() {
   let data = [];
   const closeButton = document.getElementById("close-button");
   closeButton.addEventListener("click", () => {
-    data = 0;
+    data = [];
     const iframeOverlay = document.getElementById("iframe-overlay");
     iframeOverlay.classList.remove("show");
     iframeOverlay.style.zIndex = '1';
@@ -214,12 +214,12 @@ function showReceipt() {
     const itemTotal = itemPrice * currentValue;
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
-    cou = cou + 1 ;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
       receiptContent += `${menuData[i].name}: ${currentValue} x ${itemPrice.toFixed(2)}₽ = ${itemTotal.toFixed(2)}₽<br>`;
-      data = itemPrice;
+      data[cou] = itemPrice;
+      cou = cou + 1;
       total += itemTotal;
     }
   }
@@ -228,7 +228,7 @@ function showReceipt() {
   const total = calculateTotal();
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
-  data = total;
+  data[cou] = total;
   //cou = 0;
 
   // Установка содержимого чека в iframe
