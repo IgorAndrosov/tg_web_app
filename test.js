@@ -219,7 +219,7 @@ function showReceipt() {
     // Добавьте необходимую логику для формирования строки с позицией и суммой
     if (currentValue > 0) {
       receiptContent += `${menuData[i].name}: ${currentValue} x ${itemPrice.toFixed(2)}₽ = ${itemTotal.toFixed(2)}₽<br>`;
-      data = itemPrice.toFixed(2);
+      data = itemPrice;
       total += itemTotal;
     }
   }
