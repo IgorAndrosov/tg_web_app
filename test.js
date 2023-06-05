@@ -203,7 +203,7 @@ function showReceipt() {
 
   // Создание содержимого чека
   let receiptContent = "<h2>Чек</h2>";
-  const data = [];
+  let data = [];
   let cou = 0;
 
   // Добавление позиций заказа и их суммы
