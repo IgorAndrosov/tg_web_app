@@ -193,17 +193,18 @@ function updateCartButton() {
 };
 
 function showReceipt() {
+  let data = [];
   const closeButton = document.getElementById("close-button");
   closeButton.addEventListener("click", () => {
-  const iframeOverlay = document.getElementById("iframe-overlay");
-  iframeOverlay.classList.remove("show");
-  iframeOverlay.style.zIndex = '1';
-  tg.MainButton.hide();
+    data = 0;
+    const iframeOverlay = document.getElementById("iframe-overlay");
+    iframeOverlay.classList.remove("show");
+    iframeOverlay.style.zIndex = '1';
+    tg.MainButton.hide();
   });
 
   // Создание содержимого чека
   let receiptContent = "<h2>Чек</h2>";
-  let data = [];
   let cou = 0;
 
   // Добавление позиций заказа и их суммы
@@ -213,7 +214,7 @@ function showReceipt() {
     const itemTotal = itemPrice * currentValue;
     let cartItems = ""; // Строка для хранения деталей заказа
     let total = 0;
-    data[cou] = itemPrice;
+    data = itemPrice;
     cou = cou + 1 ;
 
     // Добавьте необходимую логику для формирования строки с позицией и суммой
@@ -227,7 +228,7 @@ function showReceipt() {
   const total = calculateTotal();
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
-  data[cou] = total;
+  data = total;
   //cou = 0;
 
   // Установка содержимого чека в iframe
