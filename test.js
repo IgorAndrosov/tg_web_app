@@ -225,6 +225,8 @@ function showReceipt() {
   receiptContent += `<h3>Итого: ${total.toFixed(2)}₽</h3>`;
 
   var sum = total;
+  var sumString = sum.toString();
+  
 
   // Установка содержимого чека в iframe
   const receiptIframe = document.getElementById("receipt-iframe");
@@ -234,10 +236,7 @@ function showReceipt() {
   const iframeOverlay = document.getElementById("iframe-overlay");
 
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData({
-      type: 'text',
-      data: sum
-    });
+    tg.sendData(sumString);
   });
 
   iframeOverlay.classList.add("show");
