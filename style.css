@@ -101,7 +101,7 @@ body {
   }
  
   #iframe-overlay {
-    position: absolute;
+    position: fixed;
 
     top: 5%;
     left: 10%;
@@ -124,7 +124,7 @@ body {
   }
 
   #iframe-container {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -137,7 +137,7 @@ body {
   }
  
   #receipt-iframe {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
