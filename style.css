@@ -101,7 +101,7 @@ body {
   }
  
   #iframe-overlay {
-    position: fixed;
+    position: relative;
 
     top: 5%;
     left: 10%;
