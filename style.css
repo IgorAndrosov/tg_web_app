@@ -10,7 +10,7 @@ body {
   .cafe-item {
     position: relative;
     width: 120px;
-    height: 200px;
+    height: 250px;
     padding: 4px 0px 21px;
     box-sizing: border-box;
     text-align: center;
@@ -130,6 +130,7 @@ body {
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
+    z-index: 9999;
   }
   
   #iframe-overlay.active {
